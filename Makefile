@@ -4,8 +4,8 @@ install:
 	pip install -r requirements.txt
 
 format:
-	black src
-	black tests
+	black -l 80 src
+	black -l 80 tests
 
 test:
 	pytest tests

@@ -3,10 +3,11 @@ import logging
 
 class Deduplicator(object):
     """
-        The Depduplicator provides a public deduplicate() method who act as following:
-        - it returns a string that is similar to the first argument, but with certain duplicated characters removed.
-        - it remove consecutive sequences of same character to ensure that the length of the sequence is no greater than the second integer argument.
+    The Depduplicator provides a public deduplicate() method who act as following:
+    - it returns a string that is similar to the first argument, but with certain duplicated characters removed.
+    - it remove consecutive sequences of same character to ensure that the length of the sequence is no greater than the second integer argument.
     """
+
     def __init__(self):
         logging.basicConfig(level=logging.WARNING)
         self.input_string = None
@@ -35,8 +36,9 @@ class Deduplicator(object):
     def deduplicate(self, input_string, max_occurences):
         new_string = ""
 
-
-        if not isinstance(input_string, str) or not isinstance(max_occurences, int):
+        if not isinstance(input_string, str) or not isinstance(
+            max_occurences, int
+        ):
             raise TypeError()
 
         self._init(input_string, max_occurences)
@@ -52,6 +54,7 @@ class Deduplicator(object):
                 new_string += character
 
         return new_string
+
 
 if __name__ == "__main__":
     deduplicator = Deduplicator()
