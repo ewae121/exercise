@@ -1,6 +1,6 @@
 # Deduplicator
 
-**You can regard for time I spent using __git log__ command**
+**You can regard for time I spent using __git log__ command or regarding at the end**
 
 Write a function with two arguments: a string and an integer.
 The function will return a string that is similar to the first argument, but with certain duplicated characters removed.
@@ -64,5 +64,7 @@ make test
 
 
 ## Thanks
+
+![Example](doc/images/readme/gitlog.png?raw=true "Gitlog")
 
 Thank you for your time it was nice to talk you.
