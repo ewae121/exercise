@@ -1,5 +1,7 @@
 # Deduplicator
 
+**You can regard for time I spent using __git log__ command**
+
 Write a function with two arguments: a string and an integer.
 The function will return a string that is similar to the first argument, but with certain duplicated characters removed.
 The method should remove consecutive sequences of same character to ensure that the length of the sequence is no greater than the second integer argument.
@@ -8,16 +10,26 @@ Examples (maybe for unit testing):* "aaab", 2 => "aab"* "aabb", 1 => "ab"* "aabb
 
 Edge cases to also test:* "abcdefg", 1 => "abcdefg"* "abcdefg", 0 => ""* "", 100 => ""
 
-To install
+
+## Install
+
+To install and initiate venv:
 
 ```
 sudo apt install virtualenv
 virtualenv --python=python3
+```
+
+To get a valid venv:
+
+```
 source venv/bin/activate
 make install
 ```
 
-Usage, in a valid venv
+## Usage
+
+In a valid venv:
 
 ```
 python3 app.py --(venv) ewae@pluton:~/dev/excercise$ python3 app.py --help
@@ -37,3 +49,20 @@ Example:
 jhdddklkkkjkljklj
 ```
 
+![Example](doc/images/readme/screenshot.png?raw=true "Launch example")
+
+
+## Launch test
+
+In a valid venv:
+
+```
+make test
+```
+
+![Example](doc/images/readme/tests.png?raw=true "Test ran")
+
+
+## Thanks
+
+Thank you for your time it was nice to talk you.
