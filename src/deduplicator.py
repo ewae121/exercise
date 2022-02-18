@@ -37,7 +37,6 @@ class Deduplicator(object):
         for character in self.input_string:
             yield character
 
-
     def deduplicate(self, input_string, max_occurences):
         new_string = ""
 
