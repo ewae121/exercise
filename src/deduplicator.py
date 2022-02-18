@@ -33,6 +33,11 @@ class Deduplicator(object):
             return True
         return False
 
+    def get_next_character(self):
+        for character in self.input_string:
+            yield character
+
+
     def deduplicate(self, input_string, max_occurences):
         new_string = ""
 
@@ -41,7 +46,7 @@ class Deduplicator(object):
 
         self._init(input_string, max_occurences)
 
-        for character in self.input_string:
+        for character in self.get_next_character():
             occurence = 0
             if character != self.cur_status["curCharacter"]:
                 self._update_status(character, occurence)
