@@ -36,10 +36,8 @@ class Deduplicator(object):
     def deduplicate(self, input_string, max_occurences):
         new_string = ""
 
-        if not isinstance(input_string, str) or not isinstance(
-            max_occurences, int
-        ):
-            raise TypeError()
+        input_string = str(input_string)
+        max_occurences = int(max_occurences)
 
         self._init(input_string, max_occurences)
 

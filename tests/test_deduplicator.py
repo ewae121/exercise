@@ -22,13 +22,13 @@ def _checkException(method, input_string, occurence):
     hasException = False
     try:
         method(input_string, occurence)
-    except TypeError:
+    except (TypeError, ValueError):
         hasException = True
     return hasException
 
 
 def test_invalid_input():
     deduplicator = Deduplicator()
-    assert _checkException(deduplicator.deduplicate, 100, 1)
-    assert _checkException(deduplicator.deduplicate, "azeabzr", "0")
-    assert _checkException(deduplicator.deduplicate, 100, "1")
+    assert not _checkException(deduplicator.deduplicate, 100, 1) #Converted to str
+    assert not _checkException(deduplicator.deduplicate, "azeabzr", "0") # Converted to int
+    assert _checkException(deduplicator.deduplicate, 100, "a")

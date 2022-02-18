@@ -9,5 +9,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     deduplicator  = Deduplicator()
-    deduplicated_string = deduplicator.deduplicate(args.input, args.max_occurences)
-    print("{}".format(deduplicated_string))
+    try:
+      deduplicated_string = deduplicator.deduplicate(args.input, args.max_occurences)
+      print("{}".format(deduplicated_string))
+    except (TypeError, ValueError):
+      # Should never occured as it is checked by opt args
+      print("Invalid type detected, input must be a string and max_occurence an int")
