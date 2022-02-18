@@ -1,7 +1,5 @@
 from src.deduplicator import Deduplicator
 
-import pytest
-
 
 def test_deduplicator():
     deduplicator = Deduplicator()
@@ -29,6 +27,10 @@ def _checkException(method, input_string, occurence):
 
 def test_invalid_input():
     deduplicator = Deduplicator()
-    assert not _checkException(deduplicator.deduplicate, 100, 1) #Converted to str
-    assert not _checkException(deduplicator.deduplicate, "azeabzr", "0") # Converted to int
+    assert not _checkException(
+        deduplicator.deduplicate, 100, 1
+    )  # Converted to str
+    assert not _checkException(
+        deduplicator.deduplicate, "azeabzr", "0"
+    )  # Converted to int
     assert _checkException(deduplicator.deduplicate, 100, "a")
