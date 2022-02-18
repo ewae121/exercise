@@ -1,5 +1,7 @@
 # Deduplicator
 
+[![Python application](https://github.com/ewae121/exercise/actions/workflows/python-app.yml/badge.svg)](https://github.com/ewae121/exercise/actions/workflows/python-app.yml)
+
 **You can regard for time I spent using __git log__ command or regarding at the end**
 
 Write a function with two arguments: a string and an integer.
