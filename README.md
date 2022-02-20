@@ -12,6 +12,8 @@ Examples (maybe for unit testing):* "aaab", 2 => "aab"* "aabb", 1 => "ab"* "aabb
 
 Edge cases to also test:* "abcdefg", 1 => "abcdefg"* "abcdefg", 0 => ""* "", 100 => ""
 
+![Last status](doc/images/readme/tests.png?raw=true "Available operations result")
+
 
 ## Install
 
@@ -62,8 +64,22 @@ In a valid venv:
 make test
 ```
 
-![Example](doc/images/readme/tests.png?raw=true "Test ran")
+## Launch formatter
 
+In a valid venv:
+
+```
+make format
+```
+
+## Launch linters
+
+In a valid venv:
+
+```
+make lint
+make pylint
+```
 
 ## Thanks
 
