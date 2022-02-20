@@ -4,6 +4,8 @@
 
 import logging
 
+from src import constants
+
 
 class Deduplicator:
     """
@@ -12,6 +14,14 @@ class Deduplicator:
      duplicated characters removed.
     - it remove consecutive sequences of same character to ensure that the length
      of the sequence is no greater than the second integer argument.
+
+    The deduplicate() method start the string deduplication. At the deduplication
+    start or end the new events are sent to on_state_changed registered
+    callbacks.
+
+    To register a callback use the add_state_changed_cb() method with a method
+    as argument with the following prototype:
+      my_cb(new_state)
     """
 
     def __init__(self):
@@ -20,6 +30,15 @@ class Deduplicator:
         self.max_occurences = 0
 
         self.cur_status = {"curCharacter": "", "curOccurences": 0}
+        self.on_state_changed_cbs = []
+
+    def add_state_changed_cb(self, call_back):
+        """
+          Register a callback with a method as argument
+        The call_back method must have the following prototype:
+            my_cb(new_state)
+        """
+        self.on_state_changed_cbs.append(call_back)
 
     def _init(self, input_string, max_occurences):
         self.input_string = input_string
@@ -43,6 +62,10 @@ class Deduplicator:
         for character in self.input_string:
             yield character
 
+    def _change_processing_state(self, state):
+        for call_back in self.on_state_changed_cbs:
+            call_back(state)
+
     def deduplicate(self, input_string, max_occurences):
         """
         deduplicate method used to deduplicate strings.
@@ -56,6 +79,7 @@ class Deduplicator:
         max_occurences = int(max_occurences)
 
         self._init(input_string, max_occurences)
+        self._change_processing_state(constants.START_PROCESSING)
 
         for character in self._get_next_character():
             occurence = 0
@@ -66,5 +90,6 @@ class Deduplicator:
 
             if self._process_character(character, occurence):
                 new_string += character
+        self._change_processing_state(constants.STOP_PROCESSING)
 
         return new_string
