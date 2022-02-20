@@ -2,11 +2,6 @@
   Test for deduplicator module.
 """
 
-import os, sys
-
-sys.path.append(os.path.join(os.getcwd(), "src"))
-print(sys.path)
-
 from src.deduplicator.deduplicator import Deduplicator
 from src.deduplicator import constants
 
