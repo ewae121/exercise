@@ -4,7 +4,8 @@
 
 import logging
 
-import src.constants as constants
+from src import constants
+
 
 class Deduplicator:
     """
@@ -31,8 +32,13 @@ class Deduplicator:
         self.cur_status = {"curCharacter": "", "curOccurences": 0}
         self.on_state_changed_cbs = []
 
-    def add_state_changed_cb(self, cb):
-        self.on_state_changed_cbs.append(cb)
+    def add_state_changed_cb(self, call_back):
+        """
+          Register a callback with a method as argument
+        The call_back method must have the following prototype:
+            my_cb(new_state)
+        """
+        self.on_state_changed_cbs.append(call_back)
 
     def _init(self, input_string, max_occurences):
         self.input_string = input_string
@@ -57,8 +63,8 @@ class Deduplicator:
             yield character
 
     def _change_processing_state(self, state):
-        for cb in self.on_state_changed_cbs:
-            cb(state)
+        for call_back in self.on_state_changed_cbs:
+            call_back(state)
 
     def deduplicate(self, input_string, max_occurences):
         """

@@ -1,2 +1,6 @@
-START_PROCESSING="start"
-STOP_PROCESSING="stop"
+"""
+  Deduplicator constants.
+"""
+
+START_PROCESSING = "start"
+STOP_PROCESSING = "stop"

@@ -1,8 +1,13 @@
+"""
+  Test for deduplicator module.
+"""
+
 from src.deduplicator import Deduplicator
-import src.constants as constants
+from src import constants
 
 
 def test_deduplicator():
+    """ Test deduplicate method"""
     deduplicator = Deduplicator()
     assert deduplicator.deduplicate("aabbaa", 1) == "aba"
 
@@ -11,35 +16,39 @@ def test_deduplicator():
 
 
 def test_validate():
+    """ Test deduplicate method as requested"""
     deduplicator = Deduplicator()
     assert deduplicator.deduplicate("abcdefg", 1) == "abcdefg"
     assert deduplicator.deduplicate("abcdefg", 0) == ""
     assert deduplicator.deduplicate("", 100) == ""
 
 
-def _checkException(method, input_string, occurence):
-    hasException = False
+def _check_exception(method, input_string, occurence):
+    has_exception = False
     try:
         method(input_string, occurence)
     except (TypeError, ValueError):
-        hasException = True
-    return hasException
+        has_exception = True
+    return has_exception
 
 
 def test_invalid_input():
+    """Test exception for invalid input"""
     deduplicator = Deduplicator()
-    assert not _checkException(
+    assert not _check_exception(
         deduplicator.deduplicate, 100, 1
     )  # Converted to str
-    assert not _checkException(
+    assert not _check_exception(
         deduplicator.deduplicate, "azeabzr", "0"
     )  # Converted to int
-    assert _checkException(deduplicator.deduplicate, 100, "a")
+    assert _check_exception(deduplicator.deduplicate, 100, "a")
 
 
 def test_processing_state_changed():
+    """Test on_processing_state_changed callback"""
     start = 0
-    stop  = 0
+    stop = 0
+
     def my_cb(new_state):
         nonlocal start
         nonlocal stop
