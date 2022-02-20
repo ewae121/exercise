@@ -4,7 +4,7 @@
 
 import logging
 
-from src import constants
+from deduplicator import constants
 
 
 class Deduplicator:

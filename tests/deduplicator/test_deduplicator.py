@@ -2,12 +2,17 @@
   Test for deduplicator module.
 """
 
-from src.deduplicator import Deduplicator
-from src import constants
+import os, sys
+
+sys.path.append(os.path.join(os.getcwd(), "src"))
+print(sys.path)
+
+from src.deduplicator.deduplicator import Deduplicator
+from src.deduplicator import constants
 
 
 def test_deduplicator():
-    """ Test deduplicate method"""
+    """Test deduplicate method"""
     deduplicator = Deduplicator()
     assert deduplicator.deduplicate("aabbaa", 1) == "aba"
 
@@ -16,7 +21,7 @@ def test_deduplicator():
 
 
 def test_validate():
-    """ Test deduplicate method as requested"""
+    """Test deduplicate method as requested"""
     deduplicator = Deduplicator()
     assert deduplicator.deduplicate("abcdefg", 1) == "abcdefg"
     assert deduplicator.deduplicate("abcdefg", 0) == ""

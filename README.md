@@ -34,8 +34,8 @@ make install
 In a valid venv:
 
 ```
-python3 app.py --(venv) ewae@pluton:~/dev/excercise$ python3 app.py --help
-usage: app.py [-h] input max_occurences
+python3 src/app.py --(venv) ewae@pluton:~/dev/excercise$ python3 app.py --help
+usage: src/app.py [-h] input max_occurences
 
 positional arguments:
   input           String to deduplicate

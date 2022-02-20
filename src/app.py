@@ -4,7 +4,7 @@
 
 import argparse
 
-from src.deduplicator import Deduplicator
+from deduplicator.deduplicator import Deduplicator
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
