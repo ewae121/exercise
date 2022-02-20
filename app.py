@@ -1,6 +1,10 @@
-from src.deduplicator import Deduplicator
+"""
+  CLI to use Dediplicator library.
+"""
 
 import argparse
+
+from src.deduplicator import Deduplicator
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -10,8 +14,8 @@ if __name__ == "__main__":
 
     deduplicator  = Deduplicator()
     try:
-      deduplicated_string = deduplicator.deduplicate(args.input, args.max_occurences)
-      print("{}".format(deduplicated_string))
+        deduplicated_string = deduplicator.deduplicate(args.input, args.max_occurences)
+        print(f"{deduplicated_string}")
     except (TypeError, ValueError):
-      # Should never occured as it is checked by opt args
-      print("Invalid type detected, input must be a string and max_occurence an int")
+        # Should never occured as it is checked by opt args
+        print("Invalid type detected, input must be a string and max_occurence an int")
